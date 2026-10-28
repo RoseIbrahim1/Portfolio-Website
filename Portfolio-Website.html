@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Ibrahim | Software & AI Engineer</title>
+
+    <style>
+        /* ---------- GENERAL STYLES ---------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0b1020;
+            --surface: #131b30;
+            --primary: #a78bfa;
+            --secondary: #67e8f9;
+            --text: #f1f5f9;
+            --muted: #a0aec0;
+            --border: #26324b;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        section {
+            padding: 90px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-description {
+            color: var(--muted);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 45px;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 16, 32, 0.95);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* ---------- ABOUT / HERO ---------- */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .eyebrow {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.3s ease,
+                        background 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: #0b1020;
+            margin-right: 12px;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(167, 139, 250, 0.2);
+        }
+
+        .button-primary:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about-content {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---------- SKILLS ---------- */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s ease,
+                        border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .tag {
+            background: #202b45;
+            color: var(--secondary);
+            padding: 5px 11px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* ---------- PROJECTS ---------- */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease,
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-number {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact-box {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 25px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 15px 0 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 25px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 14px;
+                font-size: 0.9rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 480px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                padding: 12px 0;
+                gap: 5px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                font-size: 0.85rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .button {
+                padding: 10px 16px;
+                margin-bottom: 10px;
+            }
+
+            .about-content,
+            .project-card {
+                padding: 22px;
+            }
+
+            .contact-box {
+                padding: 30px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Rose.dev</a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container" id="home">
+            <div class="hero-content">
+                <div class="eyebrow">Software Engineer | AI Engineer</div>
+
+                <h1>
+                    Hi, I'm Rose.<br>
+                    I build <span>intelligent solutions.</span>
+                </h1>
+
+                <p>
+                    I'm a Telecommunications Engineering graduate
+                    passionate about software development, artificial
+                    intelligence, and building technology that solves
+                    real-world problems.
+                </p>
+
+                <a href="#projects" class="button button-primary">
+                    Explore My Work
+                </a>
+
+                <a href="#contact" class="button">
+                    Contact Me
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About <span>Me</span></h2>
+
+                <p class="section-description">
+                    A little about my background and what I do.
+                </p>
+
+                <div class="about-content">
+                    <p>
+                        I am a Telecommunications Engineering graduate
+                        with a strong interest in software engineering
+                        and artificial intelligence.
+                    </p>
+
+                    <p>
+                        My academic background gave me a foundation in
+                        mathematics, signal processing, and technical
+                        problem-solving. I have applied these skills
+                        through projects involving machine learning,
+                        deep learning, and application development.
+                    </p>
+
+                    <p>
+                        I enjoy learning new technologies, writing code,
+                        and turning ideas into practical applications.
+                        I'm currently focused on growing as a software
+                        engineer while exploring new AI technologies.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">My <span>Skills</span></h2>
+
+                <p class="section-description">
+                    Technologies and tools I use to build and learn.
+                </p>
+
+                <div class="skills-grid">
+
+                    <div class="skill-card">
+                        <h3>Programming</h3>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Dart</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>AI & Machine Learning</h3>
+                        <div class="tags">
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Keras</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">librosa</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Development</h3>
+                        <div class="tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+
+                <p class="section-description">
+                    A selection of projects I've worked on.
+                </p>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <div class="project-number">PROJECT 1</div>
+
+                        <h3>Blind Speaker Diarization</h3>
+
+                        <p>
+                            Developed a speaker diarization system that
+                            identifies who spoke when in audio recordings.
+                            The project combines a CRNN-based speaker
+                            counting model with speaker embeddings and
+                            clustering techniques.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">CRNN</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Audio Processing</span>
+                        </div>
+
+                        <a href="https://github.com/RoseIbrahim1/Blind-Speaker-Diarization"
+                           class="RoseIbrahim1/Blind-Speaker-Diarization"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Project &rarr;
+                        </a>
+                    </article>
+
+
+                    <article class="project-card">
+                        <div class="project-number">PROJECT 2</div>
+
+                        <h3>Network Intrusion Detection</h3>
+
+                        <p>
+                            Developed an IoT-based health monitoring system that collects heart rate and 
+                            temperature data from sensors and displays real-time readings through a mobile 
+                            application.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">IOT</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">Blynk</span>
+                        </div>
+
+                        <a href="https://github.com/RoseIbrahim1/IoT-Health-Monitoring-System"
+                           class="RoseIbrahim1/IoT-Health-Monitoring-System"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Project &rarr;
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's <span>Connect</span></h2>
+
+                <div class="contact-box">
+                    <h3>Have a project or opportunity in mind?</h3>
+
+                    <p>
+                        I'm interested in software engineering,
+                        artificial intelligence, and opportunities
+                        to keep learning and growing.
+                    </p>
+
+                    <div class="contact-links">
+                        <!-- Replace with your real email and profile URLs -->
+                        <a href="mailto:rose.b.ibrahim812@gmail.com">
+                            Email Me
+                        </a>
+
+                        <a href="https://github.com/RoseIbrahim1"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/rose-ibrahim-36b48b331"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Rose Ibrahim. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
